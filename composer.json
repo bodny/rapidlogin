@@ -1,0 +1,26 @@
+{
+    "name": "veltisan/rapidlogin",
+    "description": "A short description of what your package does",
+    "license": "MIT",
+
+    "autoload": {
+        "psr-4": {
+            "Veltisan\\RapidLogin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "samuel"
+        }
+    ],
+    "require": {
+        "php": ">=8.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Veltisan\\RapidLogin\\RapidLoginProvider"
+            ]
+        }
+    }
+}
