@@ -14,6 +14,11 @@ class InjectRapidLogin
     {
         $response = $next($request);
 
+        //skip when response is streamed
+        if ($response instanceof StreamedResponse) {
+            return $response;
+        }
+        
         //skip when disabled or running tests
         if (!config('rapidlogin.enabled', false) || app()->runningUnitTests()) {
             return $response;
