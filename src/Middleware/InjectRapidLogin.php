@@ -5,6 +5,7 @@ namespace Veltisan\RapidLogin\Middleware;
 use App\Models\User;
 use Closure;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -15,8 +16,8 @@ class InjectRapidLogin
     {
         $response = $next($request);
 
-        //skip when response is streamed
-        if ($response instanceof StreamedResponse) {
+        //skip when response is not classic reponse (for example: StreamedResponse, BinaryFileResponse is skipped)
+        if (!$response instanceof Response) {
             return $response;
         }
         
